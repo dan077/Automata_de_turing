@@ -1,23 +1,60 @@
-<head>  
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-</head>
-<body>
-  prueba
-<div class="d-flex justify-content-center" id="para">
-  <div class="scroll">
-    <table class="table table-bordered ">
-      <thead>
-        <tr id="letras">
-          
-        </tr>
+<!DOCTYPE html>
+<html lang="en">
 
-      </thead>
-    </table>
-   </div>
- </div>
- <script src="main.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
- 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="plugins/slick/slick.css" />
+    <link rel="stylesheet" href="main.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <label for="fcadena">Ingrese la Cadena: </label>
+    <input type="text" id="fcadena" name="fcadena"><br><br>
+    <button onclick="load()">load</button>
+    <button onclick="play()">play</button>
+
+    <div class="container">
+        <div class="slip multiple-items">
+
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items" id="cinta0"></div>
+            <div class="items" id="cinta1"></div>
+            <div class="items" id="cinta2"></div>
+            <div class="items" id="cinta3"></div>
+            <div class="items" id="cinta4"></div>
+            <div class="items" id="cinta5"></div>
+            <div class="items" id="cinta6"></div>
+            <div class="items" id="cinta7"></div>
+            <div class="items" id="cinta8"></div>
+            <div class="items" id="cinta9">
+            </div>
+        </div>
+    </div>
+    <div class="contriangulo col-md-12">
+        <div class="triangle">
+            <div class="empty"></div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="plugins/slick/slick.min.js"></script>
+    <script src="script.js"></script>
+
+
+
 </body>
+
+</html>
