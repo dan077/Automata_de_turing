@@ -22,30 +22,46 @@ function llenarceldas(cadena) {
 }
 function crearCeldas(size){
   cinta=document.getElementById("slip");
-  var k=0,num=10;
-  // if(size>10){
-    var adds=(size-10);
-  // }
-  while(k<adds){
+  var k=0,num=-5,adds=0;
+  if(size>10){
+     adds=(size-10);
+   }
+  while(k<(15+adds)){
      var elemento= document.createElement("div");
      elemento.className="items";
      elemento.id="cinta"+num;
      document.getElementById("slip").appendChild(elemento);
     k++;num++;
   }
-  //  loadSlider();
+}
+
+function loadcinta(_callback){
+     
+    $("#slip").removeClass("sliderinicio");
+    $("#slip").removeClass("slick-initialized");
+    $("#slip").removeClass("slick-slider");
+    $("#slip").empty();
+    _callback();
+
+}
+function newslider(){
+  loadcinta(function () {
+    // loadSlider();
+    crearCeldas(cadena.length);
+    $("#slip").addClass("multiple-items");
+    loadSlider();  
+  });
 }
 function load() {
+ 
   cadena = Array.from("B" + document.getElementById("fcadena").value + "B");
-  if(cadena.length>10){
-   crearCeldas(cadena.length);
-  }
+  loadcinta(newslider);
   botonNext = boton1[0];
   botonNext.click();
-
   setTimeout(function () {
     // cadena = Array.from("B" + document.getElementById("fcadena").value + "B");
     llenarceldas(cadena);
+
   }, 1000);
 
 }
@@ -106,7 +122,7 @@ function accion() {
 }
 
 //-------- jquery----------------//
-// function loadSlider(){
+ function loadSlider(){
   $('.multiple-items').slick({
 
     slidesToShow: 13,
@@ -114,6 +130,15 @@ function accion() {
     speed: 1000,
   
   });
-// }
+ }
 
+ function loadSliderInicio(){
+    $('.sliderinicio').slick({ 
+      slidesToShow: 13,
+      slidesToScroll: 1,
+      speed: 1000, 
+    });
+ }
+ 
+ window.onload=loadSliderInicio();
 // --------------------------------//
