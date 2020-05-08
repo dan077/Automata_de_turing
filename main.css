@@ -51,3 +51,55 @@
 }
 
 /* -------------------------------- */
+
+/* range-slideer */
+
+.slider{
+  -webkit-appearance: none;
+  width: 50%;
+  height: 20px;
+  /* background: rgb(3, 121, 168); */
+  background:linear-gradient(90deg,rgb(24, 135, 199) 50%,rgb(255, 255, 255) 50%) ;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition:opacity 0.2s;
+  border-radius: 12px;
+  box-shadow: 0px 1px 10px 1px rgba(41, 41, 41, 0.404);
+}
+.slider:hover{
+  opacity: 1;
+}
+.slider::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: rgb(93, 171, 175);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.slider::-moz-range-thumb{
+  width: 30px;
+  height: 30px;
+  background: rgb(93, 171, 175);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* .slider::after{
+  content: '100';
+  color:red;
+  font-size: 2rem;
+  position: absolute;
+  left: 80%;
+  top: 26%;
+}
+.slider::before{
+  content: '0';
+  color:red;
+  font-size: 2rem;
+  position: absolute;
+  left: 12%;
+  top: 2%;
+} */

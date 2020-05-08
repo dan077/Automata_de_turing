@@ -1,6 +1,7 @@
 
 // variables globales
-var state = "q1";
+var state= "q1";
+var stateprevius="q1";
 var cadena = "";
 
 var boton1=document.getElementsByClassName("slick-next");
@@ -115,8 +116,15 @@ function accion() {
   movercinta(function () {
     if (newvalue != "B" && state != "q3") {
       document.getElementById("cinta" + (i + 1)).innerHTML = "<h3>" + newvalue + "</h3>";
-      cadena[i] = newvalue;
+     
+      // efectoGrafo(cadena[i]+"->"+newvalue+","+dir); 
     }
+     // funcion julio
+    //  stado anterior,valor que encuentra,nuevo estado,nuevo valor,direcion
+     efectoGrafo(stateprevius,cadena[i],state,newvalue,dir);
+    //  ----------------------------------------
+     stateprevius=state;
+    cadena[i] = newvalue;
   });
  
 }
@@ -142,3 +150,14 @@ function accion() {
  
  window.onload=loadSliderInicio();
 // --------------------------------//
+
+var slider=document.getElementById("myRange");
+// var output=document.getElementById("value");
+slider.oninput=function(){
+   
+}
+slider.addEventListener("mousemove",function(){
+   var x=slider.value;
+   var color='linear-gradient(90deg,rgb(3, 121, 168)'+x+'%,rgb(255, 255, 255)'+x+'%)'
+   slider.style.background=color;
+})
