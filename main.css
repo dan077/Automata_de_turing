@@ -29,11 +29,11 @@
 /* -------------------------------- */
 
 /*---------diseño cinta-------------- */
-.slip {
+#slip {
     display: flex;
 }
 
-.slip .items {
+#slip .items {
     width: 5rem;
     height: 2.5rem;
     margin: 0.2rem;
@@ -45,9 +45,9 @@
     color: white;
 }
 
-.slick-next,
+/* .slick-next,
 .slick-prev {
     visibility: hidden;
-}
+} */
 
 /* -------------------------------- */

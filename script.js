@@ -20,13 +20,31 @@ function llenarceldas(cadena) {
     document.getElementById("cinta" + (i + 1)).innerHTML = "<h3 id='letra" + (i + 1) + "'>" + cadena[i] + "</h3>";
   }
 }
-
+function crearCeldas(size){
+  cinta=document.getElementById("slip");
+  var k=0,num=10;
+  // if(size>10){
+    var adds=(size-10);
+  // }
+  while(k<adds){
+     var elemento= document.createElement("div");
+     elemento.className="items";
+     elemento.id="cinta"+num;
+     document.getElementById("slip").appendChild(elemento);
+    k++;num++;
+  }
+  //  loadSlider();
+}
 function load() {
+  cadena = Array.from("B" + document.getElementById("fcadena").value + "B");
+  if(cadena.length>10){
+   crearCeldas(cadena.length);
+  }
   botonNext = boton1[0];
   botonNext.click();
 
   setTimeout(function () {
-    cadena = Array.from("B" + document.getElementById("fcadena").value + "B");
+    // cadena = Array.from("B" + document.getElementById("fcadena").value + "B");
     llenarceldas(cadena);
   }, 1000);
 
@@ -88,11 +106,14 @@ function accion() {
 }
 
 //-------- jquery----------------//
-$('.multiple-items').slick({
+// function loadSlider(){
+  $('.multiple-items').slick({
 
-  slidesToShow: 13,
-  slidesToScroll: 1,
-  speed: 1000,
+    slidesToShow: 13,
+    slidesToScroll: 1,
+    speed: 1000,
+  
+  });
+// }
 
-});
 // --------------------------------//
