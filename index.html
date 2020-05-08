@@ -14,10 +14,45 @@
 </head>
 
 <body>
-    <label for="fcadena">Ingrese la Cadena: </label>
+    <label for="fcadena">Ingrese la Cadena: </label> 
     <input type="text" id="fcadena" name="fcadena"><br><br>
     <button onclick="load()">load</button>
     <button onclick="play()">play</button>
+
+    <br><div class="container">
+        <svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <!--q1-->
+            <ellipse id="gq1" stroke="black" stroke-width="1" fill="none" cx="547.5" cy="229.5" rx="30" ry="30"/>
+            <text x="537.5" y="235.5" font-family="Times New Roman" font-size="20">q1</text>
+            <!--q2-->
+            <ellipse id="gq2" stroke="black" stroke-width="1" fill="none" cx="242.5" cy="229.5" rx="30" ry="30"/>
+            <text x="232.5" y="235.5" font-family="Times New Roman" font-size="20">q2</text>
+            <!--q3-->
+            <ellipse stroke="black" stroke-width="1" fill="black" cx="415.5" cy="399.5" rx="30" ry="30"/>
+            <ellipse id="gq3" stroke="black" stroke-width="1" fill="white" cx="415.5" cy="399.5" rx="24" ry="24"/>
+            <text x="405.5" y="405.5" font-family="Times New Roman" font-size="20">q3</text>
+            <!--lq1ba-->
+            <path stroke="black" stroke-width="1" fill="none" d="M 558.996,201.917 A 22.5,22.5 0 1 1 576.386,221.847"/>
+            <text id="q1ba" x="603.5" y="176.5" font-family="Times New Roman" font-size="20">b &gt; a, R</text>
+            <polygon fill="black" stroke-width="1" points="576.386,221.847 584.8,226.115 583.909,216.154"/>
+            <!--lq1aa-->
+            <path stroke="black" stroke-width="1" fill="none" d="M 576.99,234.332 A 22.5,22.5 0 1 1 561.602,255.846"/>
+            <text id="q1aa" x="608.5" y="288.5" font-family="Times New Roman" font-size="20">a &gt; a, R</text>
+            <polygon fill="black" stroke-width="1" points="561.602,255.846 559.387,265.016 568.875,261.856"/>
+            <!--lq2BB-->
+            <polygon stroke="black" stroke-width="1" points="517.5,229.5 272.5,229.5"/>
+            <polygon fill="black" stroke-width="1" points="272.5,229.5 280.5,234.5 280.5,224.5"/>
+            <text id="q2BB" x="359.5" y="220.5" font-family="Times New Roman" font-size="20">B &gt; B, L</text>
+            <!--lq2aa-->
+            <path stroke="black" stroke-width="1" fill="none" d="M 220.269,209.531 A 22.5,22.5 0 1 1 244.827,199.708"/>
+            <text id="q2aa" x="152.5" y="157.5" font-family="Times New Roman" font-size="20">a &gt; a, L</text>
+            <polygon fill="black" stroke-width="1" points="244.827,199.708 251.637,193.179 241.942,190.726"/>
+            <!--lq3BB-->
+            <polygon stroke="black" stroke-width="1" points="263.898,250.527 394.102,378.473"/>
+            <polygon fill="black" stroke-width="1" points="394.102,378.473 391.9,369.3 384.891,376.432"/>
+            <text id="q3BB" x="252.5" y="335.5" font-family="Times New Roman" font-size="20">B &gt; B, R</text>
+        </svg>        
+    </div>
 
     <div class="container">
         <div class="sliderinicio" id="slip">
@@ -48,7 +83,7 @@
         <div class="col-md-5 contrange">
         <input type="range" min="1" max="100" value="50" class="slider" id="myRange" name="speed">
         </div>
-      </div>
+    </div>
 
 
 

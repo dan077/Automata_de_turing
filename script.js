@@ -110,20 +110,30 @@ function movercinta(_callback) {
   }
   _callback();
 }
+//Función del grafo
+function efectoGrafo(prevState, oldValue, newState, newValue, dir){
+  //console.log("#"+newState + oldValue + newValue);
+  $("#q1aa,#q1ba,#q2aa,#q2BB,#q3BB").css({"fill":"none"});
+  $("#"+newState + oldValue + newValue).css({"fill":"green"});
+  $("#g"+prevState).css({"fill":"none"});
+  $("#g"+newState).css({"fill":"green"});
+  if(newState == "q3"){
+    $("#q1aa,#q1ba,#q2aa,#q2BB,#q3BB").css({"fill":"black"});
+    $("#"+newState + oldValue + newValue).css({"fill":"green"});
+  }
+}
 
 function accion() {
 
   movercinta(function () {
     if (newvalue != "B" && state != "q3") {
       document.getElementById("cinta" + (i + 1)).innerHTML = "<h3>" + newvalue + "</h3>";
-     
       // efectoGrafo(cadena[i]+"->"+newvalue+","+dir); 
     }
-     // funcion julio
-    //  stado anterior,valor que encuentra,nuevo estado,nuevo valor,direcion
-    //     efectoGrafo(stateprevius,cadena[i],state,newvalue,dir);
+    //  nodo anterior,valor que encuentra,nuevo nodo,nuevo valor,direcion
+    efectoGrafo(stateprevius,cadena[i],state,newvalue,dir);
     //  ----------------------------------------
-     stateprevius=state;
+    stateprevius=state;
     cadena[i] = newvalue;
   });
  
