@@ -48,8 +48,8 @@ function newslider(){
   loadcinta(function () {
     // loadSlider();
     crearCeldas(cadena.length);
-    $("#slip").addClass("multiple-items");
-    loadSlider();  
+    $("#slip").addClass("newSlider");
+    loadNewSlider();  
   });
 }
 function load() {
@@ -122,8 +122,8 @@ function accion() {
 }
 
 //-------- jquery----------------//
- function loadSlider(){
-  $('.multiple-items').slick({
+ function loadNewSlider(){
+  $('.newSlider').slick({
 
     slidesToShow: 13,
     slidesToScroll: 1,
