@@ -121,7 +121,7 @@ function accion() {
     }
      // funcion julio
     //  stado anterior,valor que encuentra,nuevo estado,nuevo valor,direcion
-     efectoGrafo(stateprevius,cadena[i],state,newvalue,dir);
+    //     efectoGrafo(stateprevius,cadena[i],state,newvalue,dir);
     //  ----------------------------------------
      stateprevius=state;
     cadena[i] = newvalue;
