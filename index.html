@@ -18,7 +18,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">Maquina de turing</a>
+    <a class="navbar-brand" href="#maq-turing">Maquina de turing</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,7 +29,7 @@
    <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">Maquina de turing</a>
+    <a class="navbar-brand" href="#maq-turing">Maquina de turing</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -86,21 +86,21 @@
 
   <div class="container">
     <label for="fcadena">Ingrese la Cadena: </label> 
-    <input type="text" id="fcadena" name="fcadena"><br><br>
+    <input type="text" id="fcadena" name="fcadena"><br>
     <button onclick="load()">load</button>
     <button onclick="play()">play</button>
   </div>
 
-    <br><div class="container">
+    <div class="container" id="maq-turing">
         <svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <!--q1-->
-            <ellipse id="gq1" stroke="black" stroke-width="1" fill="none" cx="547.5" cy="229.5" rx="30" ry="30"/>
+            <ellipse class="nodo" id="gq1" stroke="black" stroke-width="1" fill="none" cx="547.5" cy="229.5" rx="30" ry="30"/>
             <text x="537.5" y="235.5" font-family="Times New Roman" font-size="20">q1</text>
             <!--q2-->
-            <ellipse id="gq2" stroke="black" stroke-width="1" fill="none" cx="242.5" cy="229.5" rx="30" ry="30"/>
+            <ellipse class="nodo" id="gq2" stroke="black" stroke-width="1" fill="none" cx="242.5" cy="229.5" rx="30" ry="30"/>
             <text x="232.5" y="235.5" font-family="Times New Roman" font-size="20">q2</text>
             <!--q3-->
-            <ellipse stroke="black" stroke-width="1" fill="black" cx="415.5" cy="399.5" rx="30" ry="30"/>
+            <ellipse class="nodo" stroke="black" stroke-width="1" fill="black" cx="415.5" cy="399.5" rx="30" ry="30"/>
             <ellipse id="gq3" stroke="black" stroke-width="1" fill="white" cx="415.5" cy="399.5" rx="24" ry="24"/>
             <text x="405.5" y="405.5" font-family="Times New Roman" font-size="20">q3</text>
             <!--lq1ba-->

@@ -114,12 +114,14 @@ function movercinta(_callback) {
 function efectoGrafo(prevState, oldValue, newState, newValue, dir){
   //console.log("#"+newState + oldValue + newValue);
   $("#q1aa,#q1ba,#q2aa,#q2BB,#q3BB").css({"fill":"none"});
-  $("#"+newState + oldValue + newValue).css({"fill":"green"});
-  $("#g"+prevState).css({"fill":"none"});
-  $("#g"+newState).css({"fill":"green"});
+  $(".nodo").css({"fill":"aquamarine"});
+
+  $("#"+newState + oldValue + newValue).css({"fill":"chartreuse"});
+  //$("#g"+prevState).css({"fill":"none"});
+  $("#g"+newState).css({"fill":"chartreuse"});
   if(newState == "q3"){
     $("#q1aa,#q1ba,#q2aa,#q2BB,#q3BB").css({"fill":"black"});
-    $("#"+newState + oldValue + newValue).css({"fill":"green"});
+    $("#"+newState + oldValue + newValue).css({"fill":"chartreuse"});
   }
 }
 
