@@ -105,12 +105,15 @@ function play() {
         break;
     }
 
-  }, (velocidad+200));
 
+  }, (velocidad+200));
+  
 
 }
 
+var changeSpeed=false;
 function movercinta(_callback) {
+  moviendocinta=true;
   if (dir == "R") {
     botonNext.click();
   } else if (dir == "L") {
@@ -125,6 +128,7 @@ function accion() {
     if (newvalue != "B" && state != "q3") {
       document.getElementById("cinta" + (i + 1)).innerHTML = "<h3>" + newvalue + "</h3>";
     }
+  
      // funcion julio
     //  stado anterior,valor que encuentra,nuevo estado,nuevo valor,direcion
     //     efectoGrafo(stateprevius,cadena[i],state,newvalue,dir);
@@ -173,17 +177,16 @@ slider.addEventListener("mousemove",function(){
           velocidad=(1000-k*10);
           
       }
-      $('.newSlider').slick("setOption", "speed",velocidad);
-      clearInterval(smove);
-      play();
-      xpre=x;
+      slider.onmouseup = function(){
+          
+          $('.newSlider').slick("setOption", "speed",velocidad);
+          clearInterval(smove);
+          play();
+          xpre=x; 
+          
+      };
+      
     }
     var color='linear-gradient(90deg,rgb(3, 121, 168)'+x+'%,rgb(255, 255, 255)'+x+'%)'
     slider.style.background=color;
  });
-//  function cambiarspeed(){
-//   $('.newSlider').slick("setOption", "speed",500);
-//   clearInterval(smove);
-//   velocidad=500;
-//   play();
-//  }
