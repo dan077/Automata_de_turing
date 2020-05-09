@@ -84,14 +84,10 @@
     <p class="lead">Esta Maquina fue diseñada para un lenguaje {a,b}. el proposito es reemplazar todas las B que se encuentran en la cinta y hacer que el lector se posicione al finalizar en el inicio de la primera letra.</p>
   </div>
 
-  <div class="container">
-    <label for="fcadena">Ingrese la Cadena: </label> 
-    <input type="text" id="fcadena" name="fcadena"><br>
-    <button onclick="load()">load</button>
-    <button onclick="play()">play</button>
-  </div>
+ 
 
-    <div class="container" id="maq-turing">
+    <div class="d-flex justify-content-center" id="maq-turing" style="
+    margin: -146px;">
         <svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <!--q1-->
             <ellipse class="nodo" id="gq1" stroke="black" stroke-width="1" fill="none" cx="547.5" cy="229.5" rx="30" ry="30"/>
@@ -153,9 +149,18 @@
         <div class="slidecontainer container row">
           <div class="col-md-1"><h3>Speed</h3></div>
           <div class="col-md-5 contrange">
-          <input type="range" min="1" max="100" value="50" class="slider" id="myRange" name="speed">
+          <input type="range" min="1" max="500" value="50" class="slider" id="myRange" name="speed">
           </div>
         </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <input type="text" placeholder="Ingrese la cadena" id="fcadena" name="fcadena"><br>
+      <button class="btnOP btn-success" onclick="load()">load</button>
+      <button id= "btnPlay"class="btnOP btn-dark"  onclick="play()"><i class="fas fa-play-circle"></i></button>
+      <button id= "btnStop" class="btnOP btn-dark" onclick="stop()"><i class="fas fa-stop-circle"></i></button>
+      <button id= "btnPause" class="btnOP btn-dark" onclick="pause()"><i class="fas fa-pause-circle"></i></button>
+      <button id= "btnStep"class="btnOP btn-dark"  onclick="step()"><i class="fas fa-step-forward"></i></button>
     </div>
 </section>
 
@@ -163,7 +168,7 @@
     <script src="plugins/slick/slick.min.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    
+    <script src="https://kit.fontawesome.com/ae43cf70c2.js" crossorigin="anonymous"></script>
 
 </body>
 
