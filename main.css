@@ -86,8 +86,17 @@
   cursor: pointer;
 }
 
-.contBotones{
-   height: 70%;
+.footer{
+  background-color: #8b8b99;
+}
+
+/* .slider::after{
+  content: '100';
+  color:red;
+  font-size: 2rem;
+  position: absolute;
+  left: 80%;
+  top: 26%;
 }
 
 .contrange{
