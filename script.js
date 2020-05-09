@@ -1,9 +1,13 @@
-
+$( "#btnPlay" ).prop( "disabled", true ); 
+$( "#btnPause" ).prop( "disabled", true );
+$( "#btnStep" ).prop( "disabled", true );
+$( "#btnStop" ).prop( "disabled", true );
 // variables globales
+var stepController = true;
 var state= "q1";
 var stateprevius="q1";
 var cadena = "";
-
+var smove;
 var boton1=document.getElementsByClassName("slick-next");
 var boton2 = document.getElementsByClassName("slick-prev");
 var i=1;
@@ -53,62 +57,137 @@ function newslider(){
     loadNewSlider();  
   });
 }
-function load() {
+
+function pause(){
+  clearInterval(smove);
+  $( "#btnPlay" ).prop( "disabled", false );
+}
+
+function stop(){
+  load();
+}
+
+
+function step(){
+    $('.newSlider').slick('slickSetOption', 'speed', 1);
+    clearInterval(smove);
+    nuevoEstado();
+    play();  
+    $('.newSlider').slick('slickSetOption', 'speed', 250);
+}
+
+
+function load() 
+{
+
+  if(document.getElementById("fcadena").value != ""){
+    $( "#btnPlay" ).prop( "disabled", false );
+    $( "#btnPause" ).prop( "disabled", true );
+    $( "#btnStep" ).prop( "disabled", true );
+    $( "#btnStop" ).prop( "disabled", true );
+    state = "q1";
+    stateprevius = "q1";
+    cadena = "";
+    i = 1;
+    clearInterval(smove);
+  
+    cadena = Array.from("B" + document.getElementById("fcadena").value + "B");
+    loadcinta(newslider);
+    botonNext = boton1[0];
+    botonNext.click();
+    setTimeout(function () {
+      // cadena = Array.from("B" + document.getElementById("fcadena").value + "B");
+      llenarceldas(cadena);
+  
+    }, 250);
+  }
+  else{
+    Swal.fire(
+      'Campo vacio',
+      'Por favor, Ingrese una cadena',
+      'error'
+    )
+  }
  
-  cadena = Array.from("B" + document.getElementById("fcadena").value + "B");
-  loadcinta(newslider);
-  botonNext = boton1[0];
-  botonNext.click();
-  setTimeout(function () {
-    // cadena = Array.from("B" + document.getElementById("fcadena").value + "B");
-    llenarceldas(cadena);
 
-  }, 1000);
+}
 
+function nuevoEstado()
+{
+  transition();
+  switch (state) {
+    case "q1":
+      movercinta(accion);
+      i++;
+      break;
+    case "q2":
+      movercinta(accion);
+      i--;
+      break;
+    case "q3":
+      movercinta(accion);
+      $( "#btnStep" ).prop( "disabled", true );
+      $( "#btnPause" ).prop( "disabled", true );
+      $( "#btnStop" ).prop( "disabled", true);
+      clearInterval(smove);
+      break;
+  }
 }
 
 function transition(){
-  condicion = state + "," + cadena[i];
-  newaccion = trans[condicion];
-  state = newaccion.NewState;
-  newvalue = newaccion.NewValue;
-  dir = newaccion.move;
+  if(state != "q3")
+  {
+    console.log(cadena[i])
+    if(cadena[i] != 'a' && cadena[i] != 'b' && cadena[i] != "B"){
+      Swal.fire(
+        'Palabra NO aceptada',
+        '',
+        'error'
+      )
+      stop();
+    }
+    else{
+      condicion = state + "," + cadena[i];
+      newaccion = trans[condicion];
+      state = newaccion.NewState;
+      newvalue = newaccion.NewValue;
+      dir = newaccion.move;
+      if(state == "q3"){
+        Swal.fire(
+          'Palabra aceptada',
+          '',
+          'success'
+        )
+      }
+    }
+  }
 }
 
 function play() {
-
+  $( "#btnPlay" ).prop( "disabled", true );
+  $( "#btnStep" ).prop( "disabled", false );
+  $( "#btnPause" ).prop( "disabled", false );
+  $( "#btnStop" ).prop( "disabled", false);
   botonNext = boton1[0];
   botonPrevius = boton2[0];
 
   smove = setInterval(function () {
-     transition();
-    switch (state) {
-      case "q1":
-        movercinta(accion);
-        i++;
-        break;
-      case "q2":
-        movercinta(accion);
-        i--;
-        break;
-      case "q3":
-        movercinta(accion);
-        clearInterval(smove);
-        break;
-    }
-
+     nuevoEstado();
   }, 1200);
 
 
 }
 
 function movercinta(_callback) {
-  if (dir == "R") {
-    botonNext.click();
-  } else if (dir == "L") {
-    botonPrevius.click();
-  }
-  _callback();
+  if(stateprevius != "q3")
+  {
+    if (dir == "R") {
+      botonNext.click();
+    } else if (dir == "L") {
+      botonPrevius.click();
+    }
+    _callback();
+}
 }
 //Función del grafo
 function efectoGrafo(prevState, oldValue, newState, newValue, dir){
@@ -147,7 +226,7 @@ function accion() {
 
     slidesToShow: 13,
     slidesToScroll: 1,
-    speed: 1000,
+    speed: 250,
   
   });
  }
