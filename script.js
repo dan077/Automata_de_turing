@@ -142,7 +142,7 @@ function accion() {
     if (newvalue != "B" && state != "q3") {
       document.getElementById("cinta" + (i + 1)).innerHTML = "<h3>" + newvalue + "</h3>";
     }
-    // efectoGrafo(stateprevius,cadena[i],state,newvalue,dir);
+     efectoGrafo(stateprevius,cadena[i],state,newvalue,dir);
      stateprevius=state;
     cadena[i] = newvalue;
   });
