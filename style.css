@@ -10,3 +10,7 @@
     -o-background-size: cover;
     background-size: cover;
   }
+
+.nodo{
+    fill: aquamarine;
+}

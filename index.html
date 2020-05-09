@@ -1,15 +1,35 @@
-<head>  
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="plugins/slick/slick.css" />
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
 </head>
+
 <body>
-
-
- <!-- Navigation -->
+<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">Maquina de turing</a>
+    <a class="navbar-brand" href="#maq-turing">Maquina de turing</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  </div>
+</nav>
+
+<header>
+   <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#maq-turing">Maquina de turing</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -63,22 +83,87 @@
     <h1 class="display-4">Maquina de turing</h1>
     <p class="lead">Esta Maquina fue diseñada para un lenguaje {a,b}. el proposito es reemplazar todas las B que se encuentran en la cinta y hacer que el lector se posicione al finalizar en el inicio de la primera letra.</p>
   </div>
+
+  <div class="container">
+    <label for="fcadena">Ingrese la Cadena: </label> 
+    <input type="text" id="fcadena" name="fcadena"><br>
+    <button onclick="load()">load</button>
+    <button onclick="play()">play</button>
+  </div>
+
+    <div class="container" id="maq-turing">
+        <svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <!--q1-->
+            <ellipse class="nodo" id="gq1" stroke="black" stroke-width="1" fill="none" cx="547.5" cy="229.5" rx="30" ry="30"/>
+            <text x="537.5" y="235.5" font-family="Times New Roman" font-size="20">q1</text>
+            <!--q2-->
+            <ellipse class="nodo" id="gq2" stroke="black" stroke-width="1" fill="none" cx="242.5" cy="229.5" rx="30" ry="30"/>
+            <text x="232.5" y="235.5" font-family="Times New Roman" font-size="20">q2</text>
+            <!--q3-->
+            <ellipse class="nodo" stroke="black" stroke-width="1" fill="black" cx="415.5" cy="399.5" rx="30" ry="30"/>
+            <ellipse id="gq3" stroke="black" stroke-width="1" fill="white" cx="415.5" cy="399.5" rx="24" ry="24"/>
+            <text x="405.5" y="405.5" font-family="Times New Roman" font-size="20">q3</text>
+            <!--lq1ba-->
+            <path stroke="black" stroke-width="1" fill="none" d="M 558.996,201.917 A 22.5,22.5 0 1 1 576.386,221.847"/>
+            <text id="q1ba" x="603.5" y="176.5" font-family="Times New Roman" font-size="20">b &gt; a, R</text>
+            <polygon fill="black" stroke-width="1" points="576.386,221.847 584.8,226.115 583.909,216.154"/>
+            <!--lq1aa-->
+            <path stroke="black" stroke-width="1" fill="none" d="M 576.99,234.332 A 22.5,22.5 0 1 1 561.602,255.846"/>
+            <text id="q1aa" x="608.5" y="288.5" font-family="Times New Roman" font-size="20">a &gt; a, R</text>
+            <polygon fill="black" stroke-width="1" points="561.602,255.846 559.387,265.016 568.875,261.856"/>
+            <!--lq2BB-->
+            <polygon stroke="black" stroke-width="1" points="517.5,229.5 272.5,229.5"/>
+            <polygon fill="black" stroke-width="1" points="272.5,229.5 280.5,234.5 280.5,224.5"/>
+            <text id="q2BB" x="359.5" y="220.5" font-family="Times New Roman" font-size="20">B &gt; B, L</text>
+            <!--lq2aa-->
+            <path stroke="black" stroke-width="1" fill="none" d="M 220.269,209.531 A 22.5,22.5 0 1 1 244.827,199.708"/>
+            <text id="q2aa" x="152.5" y="157.5" font-family="Times New Roman" font-size="20">a &gt; a, L</text>
+            <polygon fill="black" stroke-width="1" points="244.827,199.708 251.637,193.179 241.942,190.726"/>
+            <!--lq3BB-->
+            <polygon stroke="black" stroke-width="1" points="263.898,250.527 394.102,378.473"/>
+            <polygon fill="black" stroke-width="1" points="394.102,378.473 391.9,369.3 384.891,376.432"/>
+            <text id="q3BB" x="252.5" y="335.5" font-family="Times New Roman" font-size="20">B &gt; B, R</text>
+        </svg>        
+    </div>
+
+    <div class="container">
+        <div class="sliderinicio" id="slip">
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+            <div class="items"></div>
+        </div>
+        <div class="contriangulo col-md-12">
+          <div class="triangle">
+              <div class="empty"></div>
+          </div>
+        </div>
+        <div class="slidecontainer container row">
+          <div class="col-md-1"><h3>Speed</h3></div>
+          <div class="col-md-5 contrange">
+          <input type="range" min="1" max="100" value="50" class="slider" id="myRange" name="speed">
+          </div>
+        </div>
+    </div>
 </section>
-<div class="container">
-  <div class="d-flex justify-content-center" id="para">
-    <div class="scroll">
-      <table class="table table-bordered ">
-        <thead>
-          <tr id="letras">
-            
-          </tr>
-  
-        </thead>
-      </table>
-     </div>
-   </div>
-</div>
- <script src="main.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="plugins/slick/slick.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    
+
 </body>
+
+</html>
