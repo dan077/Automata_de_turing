@@ -121,6 +121,20 @@ function movercinta(_callback) {
   }
   _callback();
 }
+//Función del grafo
+function efectoGrafo(prevState, oldValue, newState, newValue, dir){
+  //console.log("#"+newState + oldValue + newValue);
+  $("#q1aa,#q1ba,#q2aa,#q2BB,#q3BB").css({"fill":"none"});
+  $(".nodo").css({"fill":"aquamarine"});
+
+  $("#"+newState + oldValue + newValue).css({"fill":"chartreuse"});
+  //$("#g"+prevState).css({"fill":"none"});
+  $("#g"+newState).css({"fill":"chartreuse"});
+  if(newState == "q3"){
+    $("#q1aa,#q1ba,#q2aa,#q2BB,#q3BB").css({"fill":"black"});
+    $("#"+newState + oldValue + newValue).css({"fill":"chartreuse"});
+  }
+}
 
 function accion() {
 
@@ -128,7 +142,7 @@ function accion() {
     if (newvalue != "B" && state != "q3") {
       document.getElementById("cinta" + (i + 1)).innerHTML = "<h3>" + newvalue + "</h3>";
     }
-  
+    // efectoGrafo(stateprevius,cadena[i],state,newvalue,dir);
      stateprevius=state;
     cadena[i] = newvalue;
   });
