@@ -87,6 +87,10 @@
   cursor: pointer;
 }
 
+.footer{
+  background-color: #8b8b99;
+}
+
 /* .slider::after{
   content: '100';
   color:red;
