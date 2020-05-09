@@ -4,6 +4,10 @@ var state= "q1";
 var stateprevius="q1";
 var cadena = "";
 
+var slider=document.getElementById("myRange");
+var x=parseInt(slider.value);
+var velocidad;
+
 var boton1=document.getElementsByClassName("slick-next");
 var boton2 = document.getElementsByClassName("slick-prev");
 var i=1;
@@ -52,18 +56,21 @@ function newslider(){
     $("#slip").addClass("newSlider");
     loadNewSlider();  
   });
+
+ 
 }
 function load() {
- 
+
   cadena = Array.from("B" + document.getElementById("fcadena").value + "B");
   loadcinta(newslider);
   botonNext = boton1[0];
   botonNext.click();
   setTimeout(function () {
-    // cadena = Array.from("B" + document.getElementById("fcadena").value + "B");
+    x=parseInt(slider.value);
+    velocidad=parseInt(x)*10+500;
+    $('.newSlider').slick("setOption", "speed",velocidad);
     llenarceldas(cadena);
-
-  }, 1000);
+  }, velocidad);
 
 }
 
@@ -75,13 +82,14 @@ function transition(){
   dir = newaccion.move;
 }
 
+var smove=null;
 function play() {
 
   botonNext = boton1[0];
   botonPrevius = boton2[0];
 
   smove = setInterval(function () {
-     transition();
+    transition();
     switch (state) {
       case "q1":
         movercinta(accion);
@@ -97,7 +105,7 @@ function play() {
         break;
     }
 
-  }, 1200);
+  }, (velocidad+200));
 
 
 }
@@ -116,8 +124,6 @@ function accion() {
   movercinta(function () {
     if (newvalue != "B" && state != "q3") {
       document.getElementById("cinta" + (i + 1)).innerHTML = "<h3>" + newvalue + "</h3>";
-     
-      // efectoGrafo(cadena[i]+"->"+newvalue+","+dir); 
     }
      // funcion julio
     //  stado anterior,valor que encuentra,nuevo estado,nuevo valor,direcion
@@ -130,14 +136,16 @@ function accion() {
 }
 
 //-------- jquery----------------//
+
+ var runSlider=false;
  function loadNewSlider(){
   $('.newSlider').slick({
 
     slidesToShow: 13,
     slidesToScroll: 1,
     speed: 1000,
-  
   });
+   runSlider=true;
  }
 
  function loadSliderInicio(){
@@ -150,14 +158,32 @@ function accion() {
  
  window.onload=loadSliderInicio();
 // --------------------------------//
+var k;
+var xpre=x;
 
-var slider=document.getElementById("myRange");
-// var output=document.getElementById("value");
-slider.oninput=function(){
-   
-}
 slider.addEventListener("mousemove",function(){
-   var x=slider.value;
-   var color='linear-gradient(90deg,rgb(3, 121, 168)'+x+'%,rgb(255, 255, 255)'+x+'%)'
-   slider.style.background=color;
-})
+   x=parseInt(slider.value);
+    if(runSlider==true && (x-xpre)!=0){
+      if(x<50){
+        k=51-x;
+        velocidad=(1000+k*10)+250;
+        
+      }else{
+          k=x-50;
+          velocidad=(1000-k*10);
+          
+      }
+      $('.newSlider').slick("setOption", "speed",velocidad);
+      clearInterval(smove);
+      play();
+      xpre=x;
+    }
+    var color='linear-gradient(90deg,rgb(3, 121, 168)'+x+'%,rgb(255, 255, 255)'+x+'%)'
+    slider.style.background=color;
+ });
+//  function cambiarspeed(){
+//   $('.newSlider').slick("setOption", "speed",500);
+//   clearInterval(smove);
+//   velocidad=500;
+//   play();
+//  }
