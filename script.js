@@ -83,7 +83,7 @@ var bandStop=false;
 function stop(){
   bandStop=true;
   load();
-  
+  $( "#btnPlay" ).prop( "disabled", true );     
 }
 
 var stepOne=0;
