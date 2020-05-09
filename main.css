@@ -87,6 +87,10 @@
   cursor: pointer;
 }
 
+.bg-blue{
+  background-color: blue;;
+}
+
 /* .slider::after{
   content: '100';
   color:red;
