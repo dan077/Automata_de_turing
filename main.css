@@ -86,4 +86,10 @@
   cursor: pointer;
 }
 
+.contBotones{
+   height: 70%;
+}
 
+.contrange{
+  padding-top:2% ;
+}
