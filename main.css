@@ -58,7 +58,6 @@
   -webkit-appearance: none;
   width: 50%;
   height: 20px;
-  /* background: rgb(3, 121, 168); */
   background:linear-gradient(90deg,rgb(24, 135, 199) 50%,rgb(255, 255, 255) 50%) ;
   outline: none;
   opacity: 0.7;
@@ -87,19 +86,4 @@
   cursor: pointer;
 }
 
-/* .slider::after{
-  content: '100';
-  color:red;
-  font-size: 2rem;
-  position: absolute;
-  left: 80%;
-  top: 26%;
-}
-.slider::before{
-  content: '0';
-  color:red;
-  font-size: 2rem;
-  position: absolute;
-  left: 12%;
-  top: 2%;
-} */
+

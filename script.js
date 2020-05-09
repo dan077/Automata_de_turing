@@ -129,10 +129,6 @@ function accion() {
       document.getElementById("cinta" + (i + 1)).innerHTML = "<h3>" + newvalue + "</h3>";
     }
   
-     // funcion julio
-    //  stado anterior,valor que encuentra,nuevo estado,nuevo valor,direcion
-    //     efectoGrafo(stateprevius,cadena[i],state,newvalue,dir);
-    //  ----------------------------------------
      stateprevius=state;
     cadena[i] = newvalue;
   });
