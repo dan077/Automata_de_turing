@@ -6,7 +6,7 @@ var cadena = "";
 
 var slider=document.getElementById("myRange");
 var x=parseInt(slider.value);
-var velocidad;
+var velocidad,velocidadprevius;
 
 var boton1=document.getElementsByClassName("slick-next");
 var boton2 = document.getElementsByClassName("slick-prev");
@@ -51,7 +51,6 @@ function loadcinta(_callback){
 }
 function newslider(){
   loadcinta(function () {
-    // loadSlider();
     crearCeldas(cadena.length);
     $("#slip").addClass("newSlider");
     loadNewSlider();  
@@ -60,7 +59,6 @@ function newslider(){
  
 }
 function load() {
-
   cadena = Array.from("B" + document.getElementById("fcadena").value + "B");
   loadcinta(newslider);
   botonNext = boton1[0];
@@ -68,6 +66,7 @@ function load() {
   setTimeout(function () {
     x=parseInt(slider.value);
     velocidad=parseInt(x)*10+500;
+    velocidadprevius=velocidad;
     $('.newSlider').slick("setOption", "speed",velocidad);
     llenarceldas(cadena);
   }, velocidad);
@@ -81,14 +80,19 @@ function transition(){
   newvalue = newaccion.NewValue;
   dir = newaccion.move;
 }
+var changeSpeed=false;
+function fchangeSpeed(_callback){
+     if(changeSpeed==true){
+       $('.newSlider').slick("setOption", "speed",velocidad); 
+         changeSpeed=false;
+         clearInterval(smove);
+          play();
+     }
+    _callback();
+}
 
-var smove=null;
-function play() {
-
-  botonNext = boton1[0];
-  botonPrevius = boton2[0];
-
-  smove = setInterval(function () {
+function fsmove(){
+  fchangeSpeed(function(){
     transition();
     switch (state) {
       case "q1":
@@ -104,16 +108,19 @@ function play() {
         clearInterval(smove);
         break;
     }
-
-
+  });
+   
+}
+var smove=null;
+function play() {
+  botonNext = boton1[0];
+  botonPrevius = boton2[0];
+  smove = setInterval(function () {
+      fchangeSpeed(fsmove);
   }, (velocidad+200));
-  
-
 }
 
-var changeSpeed=false;
 function movercinta(_callback) {
-  moviendocinta=true;
   if (dir == "R") {
     botonNext.click();
   } else if (dir == "L") {
@@ -188,14 +195,9 @@ slider.addEventListener("mousemove",function(){
           
       }
       slider.onmouseup = function(){
-          
-          $('.newSlider').slick("setOption", "speed",velocidad);
-          clearInterval(smove);
-          play();
-          xpre=x; 
-          
-      };
-      
+            changeSpeed=true;             
+          } 
+        xpre=x; 
     }
     var color='linear-gradient(90deg,rgb(3, 121, 168)'+x+'%,rgb(255, 255, 255)'+x+'%)'
     slider.style.background=color;
