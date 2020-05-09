@@ -262,6 +262,11 @@ function accion() {
           '',
           'success'
         )
+        $( "#btnPlay" ).prop( "disabled", true );
+        $( "#btnStep" ).prop( "disabled", true );
+        $( "#btnPause" ).prop( "disabled", true );
+        $( "#btnStop" ).prop( "disabled", true );
+
       }
    
      efectoGrafo(stateprevius,cadena[i],state,newvalue,dir);
